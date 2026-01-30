@@ -1,0 +1,410 @@
+/* ===========================
+   Nigri Avocats — CSS (vitrine)
+   Objectifs :
+   - code lisible / cohérent
+   - centrage global
+   - logo plus grand
+   - espacement propre avant le profil lead
+   =========================== */
+
+:root{
+  /* Layout */
+  --pad-desktop: 48px;
+  --pad-mobile: 22px;
+  --max-width: 760px;
+
+  /* Palette (proche logo) */
+  --bg: #F3F7FF;
+  --text: #0B1630;
+  --muted: rgba(11, 22, 48, 0.72);
+  --brand: #0B2E6D;
+  --brand-soft: rgba(11, 46, 109, 0.20);
+  --line: rgba(11, 46, 109, 0.22);
+
+  /* Typo */
+  --font: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+
+  /* Logo */
+  --logo-h: 130px;
+  --logo-h-mobile: 78px;
+
+  /* Avatars */
+  --avatar: 112px;
+  --avatar-lead: 136px;
+
+  /* Espacements */
+  --space-after-logo: 22px;
+  --space-after-tagline: 56px;  
+  --space-main-top: 18px;       
+  --space-lead-bottom: 26px;
+  --space-footer-top: 34px;
+}
+
+body.dark-mode{
+  --bg: #060B16;
+  --text: rgba(242, 246, 255, 0.92);
+  --muted: rgba(242, 246, 255, 0.78);
+
+  --brand: #9DB8FF;
+  --brand-soft: rgba(157, 184, 255, 0.20);
+  --line: rgba(157, 184, 255, 0.26);
+
+  /* lisibilité typographique */
+  font-weight: 450;
+}
+
+body.dark-mode .icon-btn{
+  border-color: transparent;
+}
+
+body.dark-mode .section-divider{
+  background-color: var(--line);
+}
+
+/* Reset */
+*{ margin:0; padding:0; box-sizing:border-box; }
+html, body{ height:100%; }
+
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+
+
+
+.page{
+  min-height: 100vh;
+  padding: var(--pad-desktop);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Helpers */
+a{
+  color: var(--brand);
+  text-decoration: none;
+  border-bottom: 1px solid var(--brand-soft);
+  padding-bottom: 1px;
+  transition: border-color 0.2s ease;
+}
+a:hover{ border-bottom-color: var(--brand); }
+
+/* Accessibilité */
+.visually-hidden{
+  position:absolute !important;
+  height:1px; width:1px;
+  overflow:hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+.header,
+.main,
+.footer{
+  width: min(var(--max-width), 100%);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* ===== Header ===== */
+.header{
+  display: grid;
+  justify-items: center;
+}
+
+.header__logo img{
+  height: var(--logo-h);
+  width: auto;
+  display: block;
+  opacity: 0.98;
+}
+
+.header__title{
+  margin-top: var(--space-after-logo);
+  margin-bottom: var(--space-after-tagline);
+}
+
+.header__name{
+  font-size: 1.65rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.85rem;
+  cursor: default;
+  color: var(--brand);
+  outline: none;
+}
+
+.header__tagline{
+  font-size: 0.98rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.header {
+  position: relative; /* important pour positionner les actions */
+}
+
+.header__actions{
+  position: fixed;         /* au coin de la fenêtre, pas collé au contenu centré */
+  top: 16px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  z-index: 50;
+}
+
+.icon-btn{
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 999px;
+  padding: 4px 6px;
+  line-height: 1;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0.55;
+  transition: opacity 0.15s ease, transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.icon-btn:hover{
+  opacity: 0.95;
+  transform: translateY(-1px);
+  border-color: var(--line);
+  background: rgba(255,255,255,0.18);
+}
+
+body.dark-mode .icon-btn:hover{
+  background: rgba(0,0,0,0.18);
+}
+
+/* --- Désaccentuation des emoji (global) --- */
+.icon-btn span{
+  filter: grayscale(100%);
+  opacity: 0.45;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+/* Interaction volontaire seulement */
+.icon-btn:hover span,
+.icon-btn:focus-visible span{
+  opacity: 0.85;
+  filter: grayscale(0%);
+}
+
+
+/* ===== Main ===== */
+.main{
+  flex: 1; /* pousse le footer en bas */
+  padding-top: var(--space-main-top);
+}
+
+.team{
+  width: 100%;
+}
+
+.profile{
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+
+.profile--lead{
+  margin-bottom: var(--space-lead-bottom);
+}
+
+.team__row{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.profile__avatar{
+  width: var(--avatar);
+  height: var(--avatar);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: transparent;
+}
+
+.profile__avatar--lead{
+  width: var(--avatar-lead);
+  height: var(--avatar-lead);
+}
+
+.profile__avatar img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.profile__name{
+  font-size: 1.08rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.profile__meta{
+  display: grid;
+  gap: 7px;
+  font-size: 1.02rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+
+
+/* Séparateur minimaliste */
+.section-divider {
+    width: min(420px, 70%);
+    max-width: 70vw;
+    height: 1.5px;
+    margin: 40px auto;
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Profile links ===== */
+.profile__linkedin{
+  font-size: 0.98rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.profile__linkedin a{
+  border-bottom-color: transparent; /* plus discret que les emails */
+  opacity: 0.85;
+}
+
+.profile__linkedin a:hover{
+  opacity: 1;
+  border-bottom-color: var(--brand-soft);
+}
+
+/* ===== Footer ===== */
+.footer{
+  margin-top: var(--space-footer-top);
+  padding-bottom: 8px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.social{
+  margin-bottom: 18px;
+}
+
+.social__text{
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+  }
+
+.social__link{
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 45px;
+  text-align: center;
+}
+
+.address{
+  font-style: normal; /* pour éviter italique par défaut de <address> */
+}
+
+.footer__legal{
+  margin-top: 14px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.footer__legal a{
+  color: var(--muted);
+  border-bottom: none;
+}
+
+.footer__legal a:hover{
+  opacity: 1;
+  border-bottom: 1px solid var(--brand-soft);
+}
+
+
+/* ===== Responsive ===== */
+/* ===== Responsive ===== */
+
+/* <= 769px : tablette + mobile */
+@media (max-width: 769px){
+  .page{ padding: var(--pad-mobile); }
+
+  :root{
+    --max-width: 620px;
+
+    --logo-h: var(--logo-h-mobile);
+
+    --avatar: 112px;
+    --avatar-lead: 136px;
+
+    --space-after-tagline: 46px;
+    --space-footer-top: 24px;
+  }
+
+  .header__name{ font-size: 1.38rem; letter-spacing: 0.20em; }
+  .header__tagline{ font-size: 0.88rem; letter-spacing: 0.14em; }
+  .profile__meta{ font-size: 0.98rem; }
+  .footer{ font-size: 0.86rem; }
+
+  /* UX mobile/tablette : éviter le "fixed" qui se bat avec les barres navigateur */
+  .header__actions{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+
+  /* Désaccentuer les emoji (moins "gadget" sur petits écrans) */
+  .icon-btn span{
+    filter: grayscale(100%);
+    opacity: 0.40;
+    transition: opacity 0.2s ease, filter 0.2s ease;
+  }
+
+  .icon-btn:hover span,
+  .icon-btn:focus-visible span{
+    opacity: 0.85;
+    filter: grayscale(0%);
+  }
+}
+
+/* <= 520px : mobile étroit */
+@media (max-width: 520px){
+  .team__row{ grid-template-columns: 1fr; }
+
+  :root{
+    --space-after-tagline: 40px;
+    --space-lead-bottom: 18px;
+  }
+
+  /* Typo : un peu moins d'espacement des capitales pour la lisibilité */
+  .header__name{ letter-spacing: 0.16em; }
+  .header__tagline{ letter-spacing: 0.10em; }
+
+  /* Encore plus discret sur très petit écran */
+  .icon-btn span{
+    opacity: 0.32;
+    font-size: 13px;
+  }
+}

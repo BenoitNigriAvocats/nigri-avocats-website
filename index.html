@@ -53,6 +53,11 @@
 
   <!-- Actions top-right -->
   <div class="header__actions" aria-label="Actions">
+    <a class="header__cta" id="webinarCta" href="webinaire.html">
+      <span data-lang="fr"><span class="cta-long">Inscription au webinaire</span><span class="cta-short">Webinaire</span></span>
+      <span data-lang="en" hidden><span class="cta-long">Webinar registration</span><span class="cta-short">Webinar</span></span>
+    </a>   
+    
     <button class="icon-btn" id="langToggle" type="button" aria-label="Switch language">
       <span aria-hidden="true">🇬🇧</span>
     </button>
@@ -246,6 +251,13 @@ if (savedTheme) {
 });
 </script>
 
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const cta = document.getElementById("webinarCta");
+    if (cta && new Date() > new Date("2026-11-10T12:00:00+01:00")) cta.hidden = true;
+  });
+  </script>
+  
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",

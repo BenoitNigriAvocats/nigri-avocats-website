@@ -408,3 +408,170 @@ body.dark-mode .icon-btn:hover{
     font-size: 13px;
   }
 }
+
+
+/* ===========================
+   Webinaire (ajout)
+   À coller à la fin de style.css
+   =========================== */
+
+/* Garantit que l’attribut hidden l’emporte sur les display définis ci-dessous */
+[hidden]{ display: none !important; }
+
+/* ===== Bouton d’accès au webinaire (en-tête de l’accueil) ===== */
+.header__cta{
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--brand);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 5px 12px;
+  line-height: 1.2;
+  opacity: 0.85;
+  transition: opacity 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+.header__cta:hover,
+.header__cta:focus-visible{
+  opacity: 1;
+  border-color: var(--brand);
+  border-bottom-color: var(--brand);
+  transform: translateY(-1px);
+}
+.header__cta .cta-short{ display: none; }
+
+/* Logo cliquable sur la page webinaire, sans soulignement */
+.header__home,
+.header__home:hover{ border-bottom: none; padding-bottom: 0; }
+
+/* ===== Page webinaire ===== */
+.event{
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+}
+
+.event__kicker{
+  font-size: 0.95rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.team > .event__kicker{ margin-bottom: 22px; }
+
+.event__title{
+  font-size: 1.9rem;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--brand);
+  max-width: 620px;
+}
+
+.event__lead{
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 560px;
+}
+
+.event__facts{
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 10px 36px;
+  margin-top: 8px;
+}
+.event__facts dt{
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.event__facts dd{
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.event__cta{
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.btn-primary{
+  display: inline-block;
+  background: var(--brand);
+  color: var(--bg);
+  border: 1px solid var(--brand);
+  border-radius: 999px;
+  padding: 12px 34px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.btn-primary:hover,
+.btn-primary:focus-visible{
+  border-bottom-color: var(--brand);
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.event__status{
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--brand);
+}
+
+.event__note{
+  font-size: 0.98rem;
+  color: var(--muted);
+  max-width: 480px;
+  line-height: 1.4;
+}
+
+.profile__role{
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--brand);
+}
+
+.event__privacy{
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--muted);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.event__back{
+  margin-top: 22px;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 769px){
+  .event__title{ font-size: 1.6rem; }
+  .event__facts{ grid-template-columns: 1fr; gap: 12px; }
+}
+
+@media (max-width: 520px){
+  /* Laisse la place au bouton d’en-tête au-dessus du logo */
+  .header__logo{ margin-top: 48px; }
+  .header__cta{ font-size: 11px; padding: 4px 10px; }
+  .header__cta .cta-long{ display: none; }
+  .header__cta .cta-short{ display: inline; }
+}
